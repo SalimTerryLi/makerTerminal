@@ -1,0 +1,21 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+    - id: trailing-whitespace
+    - id: end-of-file-fixer
+    - id: check-executables-have-shebangs
+    - id: mixed-line-ending
+      args: ['-f=lf']
+    - id: double-quote-string-fixer
+  - repo: local
+    hooks:
+    - id: cmake-lint
+      name: Check CMake Files Format
+      entry: cmakelint --linelength=120 --spaces=4 --filter=-whitespace/indent
+      language: python
+      additional_dependencies:
+        - cmakelint==1.4.1
+      files: 'CMakeLists.txt$|\.cmake$'
