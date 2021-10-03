@@ -19,3 +19,7 @@ repos:
       additional_dependencies:
         - cmakelint==1.4.1
       files: 'CMakeLists.txt$|\.cmake$'
+    - id: clang-format
+      name: Check Code Style
+      entry: ./tools/check_code_style.bash
+      language: script
